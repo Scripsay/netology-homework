@@ -1,0 +1,27 @@
+[
+  {
+    "question": "Сколько лет ?",
+    "correct_answer": 25,
+
+  },
+  {
+    "question": "Сколько месяцев?",
+    "correct_answer": 9,
+
+  },
+  {
+    "question": "Сколько всего пальцев у человека?",
+    "correct_answer": 20,
+
+  },
+  {
+    "question": "Сколько тузов в колоде карт?",
+    "correct_answer": 4,
+
+  },
+  {
+    "question": "Что выпадает зимой?",
+    "correct_answer": "снег",
+    
+  }
+]
