@@ -1,12 +1,7 @@
 <?php
-    include 'functions.php';
+include 'functions.php';
  if (isPOST()) {
-        /*   if (getUploadedFileClientName()) {
-            echo 'Разрешено загружать только Json';
-            die;
-        }*/
-        // Загружаем в нужную папку аватарку
-        if(!uploadFile('test', getUploadedFileNewName())) {
+        if(!uploadFile('test', getUploadedFileClientName())) {
             echo 'Файл не смог загрузиться';
             die;
         }

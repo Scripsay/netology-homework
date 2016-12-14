@@ -1,23 +1,14 @@
 
 <?php
-    include  'functions.php';
-?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Список тестов</title>
-</head>
-<body>
-    <table border="1">
-        <?php foreach (getRecords() as $record): ?>
-            <tr>
-                <td><? $dir    = __DIR__ . '/Test';
-                $files1 = scandir($dir);
-                list ($List1, $List2) = $files1; ?> </td>
+  include  'functions.php';
 
-            </tr>
-        <? endforeach; ?>
-    </table>
-</body>
-</html>
+  $data = json_decode(file_get_contents('data.json'), true);
+$dir    = __DIR__ . '/Tests';
+
+$f = scandir($dir);
+
+foreach ($f as $file){
+    if(preg_match('/\.(json)/', $file)){
+        echo $file.'<br/>';
+    }
+}

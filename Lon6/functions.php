@@ -9,7 +9,7 @@ function getQueryParam($name)
  */
 function uploadFile($fieldName, $newName)
 {
-    $newPath = __DIR__ . '/Test';
+    $newPath = __DIR__ . '/Tests';
     $tmpFile = $_FILES[$fieldName]['tmp_name'];
     if(!move_uploaded_file($tmpFile, $newPath . '/' . $newName)) {
        return false;
@@ -45,4 +45,33 @@ function getUploadedFileNewName()
 function getExtFile($fileName)
 {
     return substr($fileName, strrpos($fileName, '.') + 1);
+}
+define('DATA_JSON_FILE', __DIR__ . '/data.json');
+
+
+function getRecords() {
+    if (!file_exists(DATA_JSON_FILE)) {
+        return [];
+    }
+    $json = file_get_contents(DATA_JSON_FILE);
+    $arrayData = @json_decode($json, true);
+    if (!empty($arrayData)) {
+        return $arrayData;
+    }
+    return [];
+}
+
+function searchWhatItems($what)
+{
+    $data = getRecords();
+    if (empty($what)) {
+        return $data;
+    }
+    $result = [];
+    foreach ($data as $item) {
+        if (strcasecmp($item['correct_answer'], $what) == 0) {
+            $result[] = $item;
+        }
+    }
+    return $result;
 }
